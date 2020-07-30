@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepositoryInterface;
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -22,7 +23,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::paginate(4);
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -32,7 +34,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -43,7 +45,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->password = bcrypt($request->password);
+        $user = $this->userRepository->store($request->toArray());
+        $user->assignRole('user');
+
+
+        return redirect()->route('admin.users.index')->with('success','Usuário criado com sucesso');
     }
 
     /**

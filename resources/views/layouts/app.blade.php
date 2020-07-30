@@ -31,9 +31,26 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    @auth
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                                <a href="$"
+                                   class="nav-link dropdown-toggle"
+                                   id="navbarDropdown"
+                                   role="button"
+                                   data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Menu
+                                </a>
 
-                    </ul>
+                                <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                    <li class="dropdown-item"><a href="{{route('admin.users.index')}}">Usuários</a></li>
+                                </ul>
+                            </li>
+
+
+                        </ul>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -72,7 +89,17 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    @if(Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{Session::get('success')}}</strong>
+                        </div>
+                    @endif
+                    @yield('content')
+                </div>
+            </div>
         </main>
     </div>
 
