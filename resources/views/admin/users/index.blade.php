@@ -14,8 +14,9 @@
             <table class="table table-bordered ">
                 <thead>
                 <tr>
-                    <td>Nome</td>
-                    <td>E-Mail</td>
+                    <th>Nome</th>
+                    <th>E-Mail</th>
+                    <th>Detalhes</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -23,6 +24,11 @@
                     <tr>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
+                        <td>
+                            <a class="btn btn-success btn-sm" href="{{route('admin.users.show', ['user' => $user->id])}}">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

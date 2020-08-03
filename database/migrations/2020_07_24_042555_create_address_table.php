@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAndressTable extends Migration
+class CreateAddressTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAndressTable extends Migration
      */
     public function up()
     {
-        Schema::create('andresses', function (Blueprint $table) {
+        Schema::create('addresses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('cep',8);
@@ -34,6 +34,6 @@ class CreateAndressTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('andresses');
+        Schema::dropIfExists('addresses');
     }
 }

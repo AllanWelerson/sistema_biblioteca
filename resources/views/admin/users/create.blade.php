@@ -13,6 +13,8 @@
         @csrf
         <div class="row justify-content-center">
             <div class="col-8">
+                <fieldset>
+                    <legend>Dados Usuário</legend>
                     <div class="form-row mb-3">
                         <div class="col">
                             <label for="name">Name</label>
@@ -33,6 +35,61 @@
                             <input type="password" required name="password" id="password" class="form-control">
                         </div>
                     </div>
+                </fieldset>
+
+
+                <fieldset>
+                    <legend>Endereço</legend>
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <label for="description">Descrição</label>
+                            <input type="text" required name="description" id="description" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <label for="cep">CEP</label>
+                            <input type="text" required name="cep" id="cep" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <label for="number">Número</label>
+                            <input type="number" required name="number" id="number" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <label for="complement">Complemento</label>
+                            <input type="text" required name="complement" id="complement" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <label for="city">Cidade</label>
+                            <input type="text" required name="city" id="city" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <label for="neighborhood">Bairro</label>
+                            <input type="text" required name="neighborhood" id="neighborhood" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <label for="state">Estado</label>
+                            <input type="text" required name="state" id="state" class="form-control">
+                        </div>
+                    </div>
+                </fieldset>
+
             </div>
         </div>
         <div class="row justify-content-center">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Address;
 use App\Http\Controllers\Controller;
 use App\Repositories\UserRepositoryInterface;
 use App\User;
@@ -46,22 +47,29 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->password = bcrypt($request->password);
-        $user = $this->userRepository->store($request->toArray());
+        $user = $this->userRepository->store($request->only(['name','email','password']));
         $user->assignRole('user');
-
-
+        $address = new Address();
+        $address->cep =  $request->cep;
+        $address->number  =  $request->number;
+        $address->complement  =  $request->complement;
+        $address->city  =  $request->city;
+        $address->neighborhood  =  $request->neighborhood;
+        $address->state  =  $request->state;
+        $address->description  =  $request->description;
+        $user->address()->save($address);
         return redirect()->route('admin.users.index')->with('success','Usuário criado com sucesso');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('admin.users.show', compact('user'));
     }
 
     /**
@@ -95,6 +103,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }
